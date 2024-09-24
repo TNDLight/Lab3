@@ -3,10 +3,6 @@ package org.translation;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO Task: modify this class so that it also supports the Spanish language code "es" and
-//            one more language code of your choice. Each member of your group should add
-//            support for one additional langauge code on a branch; then push and create a pull request on GitHub.
-
 // Extra Task: if your group has extra time, you can add support for another country code in this class.
 
 /**
@@ -23,11 +19,16 @@ public class InLabByHandTranslator implements Translator {
      */
 
     public static final String CANADA = "can";
+    public static final String GERMAN = "de";
+    public static final String ENGLISH = "en";
+    public static final String CHINESE = "zh";
+    public static final String SPANISH = "es";
+    public static final String JAPANESE = "ja";
 
     @Override
     public List<String> getCountryLanguages(String country) {
         if (CANADA.equals(country)) {
-            return new ArrayList<>(List.of("de", "en", "zh"));
+            return new ArrayList<>(List.of(GERMAN, ENGLISH, CHINESE, SPANISH, JAPANESE));
         }
         return new ArrayList<>();
     }
@@ -52,21 +53,27 @@ public class InLabByHandTranslator implements Translator {
      */
     @Override
     public String translate(String country, String language) {
-        // TODO Checkstyle: Return count is 5 (max allowed for non-void methods/ lambdas is 2).
-        if (!CANADA.equals(country)) {
+        String countryName = "";
+
+        if (!CANADA.equals(country) && !GERMAN.equals(language) && !ENGLISH.equals(language)
+                && !CHINESE.equals(language) && !SPANISH.equals(language) && !JAPANESE.equals(language)) {
             return null;
         }
-        if ("de".equals(language)) {
-            return "Kanada";
+        if (GERMAN.equals(language)) {
+            countryName = "Kanada";
         }
-        else if ("en".equals(language)) {
-            return "Canada";
+        else if (ENGLISH.equals(language)) {
+            countryName = "Canada";
         }
-        else if ("zh".equals(language)) {
-            return "加拿大";
+        else if (CHINESE.equals(language)) {
+            countryName = "加拿大";
         }
-        else {
-            return null;
+        else if (SPANISH.equals(language)) {
+            countryName = "Canadá";
         }
+        else if (JAPANESE.equals(language)) {
+            countryName = "カナダ";
+        }
+        return countryName;
     }
 }

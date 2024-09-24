@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * An implementation of the Translator interface which reads in the translation
@@ -15,8 +16,11 @@ import org.json.JSONArray;
  */
 public class JSONTranslator implements Translator {
 
-    // TODO Task: pick appropriate instance variables for this class
+    private String filename;
+    private JSONArray translations;
+    private boolean isFileloaded;
 
+    // TODO Task: pick appropriate instance variables for this classÅ
     /**
      * Constructs a JSONTranslator using data from the sample.json resources file.
      */
@@ -39,6 +43,7 @@ public class JSONTranslator implements Translator {
 
             // TODO Task: use the data in the jsonArray to populate your instance variables
             //            Note: this will likely be one of the most substantial pieces of code you write in this lab.
+            this.translations = jsonArray;
 
         }
         catch (IOException | URISyntaxException ex) {
@@ -50,6 +55,7 @@ public class JSONTranslator implements Translator {
     public List<String> getCountryLanguages(String country) {
         // TODO Task: return an appropriate list of language codes,
         //            but make sure there is no aliasing to a mutable object
+
         return new ArrayList<>();
     }
 
