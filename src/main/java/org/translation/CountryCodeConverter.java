@@ -69,7 +69,7 @@ public class CountryCodeConverter {
     public String fromCountry(String country) {
         for (String name: countryMap.keySet()) {
             if (country.equals(name)) {
-                return countryMap.get(name);
+                return countryMap.get(name).toLowerCase();
             }
         }
         return country;
